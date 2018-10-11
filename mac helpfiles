@@ -1,0 +1,6 @@
+# to install brew which can use used to download software for MAC 
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+# syntex
+brew install java
+
+# if Mac is not detecting Wifi login to your router homepage and make sure channle is less than 11. It should not be Auto.
