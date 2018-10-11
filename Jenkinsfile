@@ -1,5 +1,5 @@
 node {
   stage('make a new dir'){
-sh mkdir file4
+sh 'mkdir file4'
   }
 }
