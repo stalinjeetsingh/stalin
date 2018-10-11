@@ -1,7 +1,2 @@
-NODE {
-stage (pull github repo) {
-git 'https://github.com/stalinjeetsingh/stalin'
-}
-stage (echo command run ) {
-sh'echo 'PIPELINE BY ME''
-}
+#! /bin/bash
+mkdir file4
