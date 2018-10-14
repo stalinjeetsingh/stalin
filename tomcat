@@ -1,0 +1,9 @@
+#! /bin/bash 
+id studentapp
+ if [ $? -eq 0 ]; then
+echo "user exists" 
+else useradd studentapp
+echo "user created"
+fi
+su studentapp
+cd /home/studentapp
