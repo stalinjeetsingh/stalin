@@ -1,0 +1,21 @@
+#! /bin/bash
+
+IP=$(hostname -i)
+
+webf()
+{
+echo"Web SERVER SETUP"
+rpm -q httpd
+if [ $? -eq 0 ]; then
+echo " skipping"
+else
+echo " installinbg web server "
+sudo yum install httpd -y
+sudo systemctl enable httpd
+echo "ProxyRequests Off
+ProxyPass /student http://${IPADD}:8080/student
+ProxyPassReverse /student http://${IPADD}:8080/student" > /etc/httpd/conf.d/tomcat.conf
+sudo systemctl restart httpd
+fi
+}
+webf
