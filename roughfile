@@ -1,0 +1,63 @@
+webf()
+{
+IPADD=$(hostname -i)
+echo"Web SERVER SETUP"
+# check if Httpd is already installed"
+rpm -q httpd
+if [ $? -eq 0 ]; then 
+echo " skipping"
+else 
+echo " installinbg web server "
+sudo yum install httpd -y
+sudo systemctl enable httpd
+fi
+echo "ProxyRequests Off
+ProxyPass /student http://${IPADD}:8080/student
+ProxyPassReverse /student http://${IPADD}:8080/student" > /etc/httpd/conf.d/tomcat.conf
+sudo systemctl restart
+}
+
+
+
+mariadb()
+{
+echo"DB SERVER SETUP"
+# check if mariadb is already installed ""
+rpm -q mariadb-server
+if [ $? -eq 0 ]; then 
+echo " SKIPPING"
+else
+fi 
+echo " Installing Mariadb-Server "
+sudo yum install mariadb-server -y
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+
+echo"Creating Database and table"
+https://raw.githubusercontent.com/cit31/project-1/master/student.sql >/tmp/student.sql
+mysql </tmp/student.sql
+echo "LOADING MYSQL SCHEMA"
+IPADD=$(hostname -i)
+}
+
+Tomcat
+{
+id studentapp
+if [ $? -eq 0 ]; then 
+echo " SKIPPING user creation"
+else
+useradd studentapp
+echo " User created"
+fi
+echo " checking java"
+sudo yum install java -y
+cd /home/studentapp
+echo"Tomcat SERVER SETUP"
+rpm -q apache Tomcat
+if [ $? -eq 0 ]; then 
+echo " skipping"
+else 
+echo " installinbg web server "
+wget http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.34/bin/apache-tomcat-8.5.34.tar.gz 
+tar -zx apache-tomcat-8.5.34.tar.gz
+rm -rf webapps/*
