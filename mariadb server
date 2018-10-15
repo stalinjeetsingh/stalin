@@ -1,0 +1,22 @@
+#! /bin/bash
+IP=$(hostname -i)
+DB()
+{
+echo"DB SERVER SETUP"
+# check if mariadb is already installed ""
+rpm -q mariadb-server
+if [ $? -eq 0 ]; then 
+echo " SKIPPING"
+else
+echo " Installing Mariadb-Server "
+sudo yum install mariadb-server -y
+echo"Creating Database and table"
+https://raw.githubusercontent.com/cit31/project-1/master/student.sql >/tmp/student.sql
+mysql </tmp/student.sql
+echo "LOADING MYSQL SCHEMA"
+fi
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+echo "Starting MariaDB Service"
+}
+DB
