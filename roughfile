@@ -43,14 +43,12 @@ IPADD=$(hostname -i)
 Tomcat
 {
 id studentapp
-if [ $? -eq 0 ]; then 
-echo " SKIPPING user creation"
-else
-useradd studentapp
-echo " User created"
+ if [ $? -eq 0 ]; then
+echo "user exists" 
+else useradd studentapp
+echo "user created"
 fi
-echo " checking java"
-sudo yum install java -y
+su studentapp
 cd /home/studentapp
 echo"Tomcat SERVER SETUP"
 rpm -q apache Tomcat
