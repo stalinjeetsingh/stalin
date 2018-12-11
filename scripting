@@ -1,0 +1,26 @@
+PS1 is the envirnment varibale. We can customized it
+to change our inital login text in terminal
+It is define somehere in basgrc
+$ cat ~/.bashrc | grep PS1
+
+user@localhost: ~$ PS1="PROMPT>"
+PROMPT> Type commands here # Prompt string changed.
+
+tee commnad used to print output on screen and store the same in a file at same time
+e.g
+$ cat a* | tee out.txt
+$ cat out.txt
+a1
+a1
+Note that cat: a1: Permission denied does not appear because it belongs to
+stderr. The tee command can read from stdin only.
+
+creating alias
+$ alias install='sudo wget install'
+
+
+The alias command is temporary; aliasing exists until we close the current terminal
+only. To keep these shortcuts permanent, add this statement to the ~/.bashrc
+file. Commands in ~/.bashrc are always executed when a new shell process
+is spawned:
+$ echo 'alias cmd="command seq"' >> ~/.bashrc
