@@ -35,3 +35,6 @@ echo $REPLY
 otherwise you specifiy you own variable
 read -p " enetr your name" Myname
 now varibale will be stored in Myname
+
+$ read -t 2 var
+#Read the string that is typed within 2 seconds into variable var.
