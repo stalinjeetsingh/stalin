@@ -1,0 +1,36 @@
+Try :(){ :|: & };:
+
+
+*********************************************
+This is a so called fork bomb implemented in shell.
+
+from wikipedia:
+
+:(){ :|:& };:
+\_/| |||| ||\- ... the function ':', initiating a chain-reaction: each ':' will start    two more.
+ | | |||| |\- Definition ends now, to be able to run ...
+ | | |||| \- End of function-block
+ | | |||\- disown the functions (make them a background process), so that the children    of a parent
+ | | |||   will not be killed when the parent gets auto-killed
+ | | ||\- ... another copy of the ':'-function, which has to be loaded into memory.
+ | | ||   So, ':|:' simply loads two copies of the function, whenever ':' is called
+ | | |\- ... and pipe its output to ...
+ | | \- Load a copy of the function ':' into memory ...
+ | \- Begin of function-definition
+ \- Define the function ':' without any parameters '()' as follows:
+ 
+ *************************************************************************
+ 
+ This is called a fork bomb.
+
+:() means you are defining a function called :
+
+{:|: &} means run the function : and send its output to the : function again and run that in the background.
+
+The ; is a command separator, like &&.
+
+: runs the function the first time.
+
+Essentially you are creating a function that calls itself twice every call and doesn't have any way to terminate itself. It will keep doubling up until you run out of system resources.
+
+Running in Virtualbox was quite sensible really otherwise you would have had to restart your pc
