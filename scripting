@@ -24,3 +24,14 @@ only. To keep these shortcuts permanent, add this statement to the ~/.bashrc
 file. Commands in ~/.bashrc are always executed when a new shell process
 is spawned:
 $ echo 'alias cmd="command seq"' >> ~/.bashrc
+
+**********************************
+read -p "enter your name" (to prompt)
+read -s -p enetr your name (to prompt and not displaying anything while we type on screen)
+read -n 5-p "enter your name" (to prompt and to limit input to 5 char)
+
+by default the read command store the varibale in REPLY varibale
+echo $REPLY
+otherwise you specifiy you own variable
+read -p " enetr your name" Myname
+now varibale will be stored in Myname
